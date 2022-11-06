@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>copy</title>
+	</head>
+	<script>
+		function copy(){
+			var text = document.getElementById('box1').value
+			document.getElementById('box2').value=text
+			document.getElementById('box3').innerHTML='复制成功'		
+		}
+		
+	</script>
+	<body>
+	    <h3>点击复制按钮，从第一个文本框复制到第二个文本框</h3>
+		<input type="text"  id="box1" />
+		<button onclick="copy()">复制</button>
+		<input type="text"  id="box2"/>
+		<br />
+		<br />
+		<a id="box3" style="color: blue "></a>
+		
+	</body>
+</html>
