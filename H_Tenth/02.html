@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -6,20 +7,28 @@
 	</head>
 	<script>
 		function copy(){
-			var text = document.getElementById('box1').value
-			document.getElementById('box2').value=text
-			document.getElementById('box3').innerHTML='复制成功'		
+			var demo = document.getElementById('demo01').value
+			if(demo.trim().length==0){
+			      Result.innerHTML = "无内容可复制";  
+			      obj.focus();
+			}else{
+				 document.getElementById('demo02').value=demo
+				 Result.innerHTML = "";
+				 document.getElementById('demo03').innerHTML='复制成功哟～'
+			}
+				
 		}
 		
 	</script>
-	<body>
-	    <h3>点击复制按钮，从第一个文本框复制到第二个文本框</h3>
-		<input type="text"  id="box1" />
-		<button onclick="copy()">复制</button>
-		<input type="text"  id="box2"/>
+	
+<body >
+	    <h3>点击copy按钮，便可从第一个文本框复制到第二个文本框</h3>
+		<input type="demo"  id="demo01" />
+		<button onclick=" copy()">copy</button>
+		<input type="demo"  id="demo02"/>
+		<span id="Result" style="color: red "></span>
 		<br />
 		<br />
-		<a id="box3" style="color: blue "></a>
-		
+		<a id="demo03" style="color: blue "></a>
 	</body>
 </html>
