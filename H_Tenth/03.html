@@ -1,100 +1,162 @@
 
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-
-	<script>
-			function nameInp() {
-				var nameVa = document.getElementById("nameInp").value
-				if (nameVa.trim().length == 0 || nameVa == null) {
-					document.getElementById("spanVa").innerHTML = "请输入名字"
-				} else {
-					document.getElementById("spanVa").innerHTML = ""
-				}
+  <head>
+    <title>注册</title>
+	<style>
+		 html {                                       
+		        width: 100%;
+		        height: 100%;
+		    }
+		th{
+			color: white;
+		}
+		body {
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			margin:0;
+			padding:0;
+			font-family:sans-serif;
+			background-image: url(De-lovely.jpg);;
+		}
+		.box {
+			width:500px;
+			padding:40px;
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+		
+			background-color:rgba(35,37,43,0.8);}
+			
+			text-align:center;
+			box-shadow:20px 25px 45px 15px;
+		}
+		 h1 {
+			
+			color: white;
+			text-transform:uppercase;
+			font-weight:500;
+		}
+		.box input[type = "text"],.box input[type = "password"] {
+			/*border:0;
+			*/
+		    background:none;
+			display:block;
+			margin:20px auto;
+			text-align:center;
+			border:2px solid #3498db;
+			padding:14px 10px;
+			width:200px;
+			outline:none;
+			color:white;
+			border-radius:24px;
+			transition:0.25s;
+		}
+		.box input[type = "text"]:focus,.box input[type = "password"]:focus {
+			/* width:280px; */
+			border-color:#2ecc71;
+		}
+		.box input[type = "submit"] {
+			/* border:0;
+			*/
+		    background:none;
+			display:block;
+			margin:20px auto;
+			text-align:center;
+			border:2px solid #2ecc71;
+			padding:14px 40px;
+			outline:none;
+			color:white;
+			border-radius:24px;
+			transition:0.25s;
+			cursor:pointer;
+		}
+		.box input[type = "submit"]:hover {
+			background:#2ecc71;
+		}
+		
+	</style>
+     <script type="text/javascript">
+        function checkUserName(obj){
+            var username = obj;
+        	var checkUserNameResult = document.getElementById("checkUserNameResult");  
+            if(username.trim().length==0){
+                  checkUserNameResult.innerHTML = "用户名为空";  
+                  obj.focus();
+            }else{
+            	 checkUserNameResult.innerHTML = "";  
+            }
+        }
+        function checkPassword(obj){
+            var password = obj;
+			var Pw = document.getElementById("pw").value;
+			var checkPasswordResult = document.getElementById("checkPasswordResult"); 
+			if(password.trim().length==0){
+			    checkPasswordResult.innerHTML = "密码为空";  
+			    obj.focus();
+			}else{
+				 checkPasswordResult.innerHTML = "";  
 			}
-
-			function passInp() {
-				var passVa = document.getElementById("passInp").value
-				if (passVa.trim().length == 0 || passVa == null) {
-					document.getElementById("spanVaPa").innerHTML = "请输入密码"
-				} else {
-					document.getElementById("spanVaPa").innerHTML = ""
-				}
+			if(Pw.length < 6 && Pw > 14) {
+				checkPasswordResult.innerHTML = "密码在6-14位间";
+				obj.focus();
 			}
-		</script>
-	<body>
-		<table align="center" width="400" border="1" cellpadding="8" cellspacing="0">
-			<tr>
-				<td colspan="2" align="center"><h3>resume</h3></td>
+            
+        }
+		function checkrePassword(obj){
+		    var password = obj;
+			var rePw = document.getElementById("repw").value;
+			var pw = document.getElementById("checkPasswordResult");
+			var re = document.getElementById("checkrePasswordResult"); 
+			if(rePw.length < 6 && rePw > 16) {
+				checkPasswordResult.innerHTML = "密码在6-14位间";
+				obj.focus();
+			}
+			if(password.trim().length==0){
+			    re.innerHTML = "密码为空";  
+			    obj.focus();
+			}else{
+				 re.innerHTML = "";  
+			}
+			//确认密码
+			if(pw != re){
+			    checkrePasswordResult.innerHTML = "密码不一致";  
+			    obj.focus();
+			}else{
+				 checkPasswordResult.innerHTML = "";  
+			}
+		}
+    </script>
+  </head>
+  <body >
+  <table class="box" >
+	<form action="" name="test_form" >
+
+        <tr>
+			<th>user：</th>
+			<td><input type="text" name="username"  onblur="checkUserName(this.value);" /></td>
+		<br />	<td><span id="checkUserNameResult" style="color: orangered "></span>  </td>
+		</tr>
+		<tr>
+			<th>password：</th>
+			<td><input type="password" id="pw" name="password" onblur="checkPassword(this.value);"/>
+			<td><span id="checkPasswordResult" style="color: orangered "></span></td>
+		</tr>
+		<tr>
+			<th>confirm password：</th>
+			<td><input type="password" name="repassword" id='repw' onblur="checkrePassword(this.value);"/>
+			<td><span id="checkrePasswordResult" style="color: orangered "></span></td>
+		</tr>
+				<tr>	
+					<td colspan="2" align="left">
+						<input type="submit" name="submit" value="login">
+						
+					</td>
 				</tr>
-					<tr>
-						<th>姓名：</th>
-						<td><input id="nameInp" onblur="nameInp()" size="19" type="text" name="name" required><span id="spanVa" style="color: red "></span></td>
-					</tr>
-					<tr>
-						<th>密码：</th>
-						<td><input id="passInp" onblur="passInp()" type="password" size="20" name="password" required><span id="spanVaPa" style="color: red "></span>
-						</td>
-					</tr>
-					<tr>
-						<th>性别：</th>
-						<td>
-							<input type="radio" name="sex" checked>男&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="sex">女
-						</td>
-					</tr>
-					<tr>
-						<th>血型：</th>
-						<td>
-							<input type="radio" name="blood type" value="O">O&nbsp;
-							<input type="radio" name="blood type" value="A">A&nbsp;
-							<input type="radio" name="blood type" value="B">B&nbsp;
-							<input type="radio" name="blood type" value="AB">AB
-						</td>
-					</tr>
-					<tr>
-						<th>性格：</th>
-						<td>
-							<input type="checkbox" name="character" value="1">热情大方&nbsp;
-							<input type="checkbox" name="character" value="2">温柔体贴&nbsp;
-							<input type="checkbox" name="character" value="3">多情善感
-						</td>
-					</tr>
-					<tr>
-						<th>文件：</th>
-						<td>
-							
-							<input type="file" placeholder="浏览.." onclick="onwj(wjSpan)">
-						</td>
-					</tr>
-					<tr>
-						<th>简介：</th>
-						<td>
-							<textarea name="des" rows="4" cols="30" placeholder="请输入你的个人介绍......" required></textarea>
-						</td>
-					</tr>
-					<tr>
-						<th>城市：</th>
-						<td>
-							<select name="city">
-								<option>北京市</option>
-								<option value="1">广安市</option>
-								<option value="2">成都市</option>
-								<option value="3">武汉</option>
-								<option value="4">南京</option>
-								<option value="5">东莞</option>
-							</select>
-						</tr>
-					<tr>	<!--  提/置-->
-						<td colspan="2" align="center">
-							<input type="submit" name="submit" value="提交">
-							<input type="reset" name="reset" value="重置">
-						</td>
-					</tr>
-				</table>
-	</body>
+	</form>
+    </table>
+  </body>
+
 </html>
